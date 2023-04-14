@@ -22,14 +22,16 @@ formEl.addEventListener(
     feedbackFormState.email = emailEl.value;
     feedbackFormState.message = textareaEl.value;
     saveToLocalStorage('feedback-form-state', feedbackFormState);
-  }, 2000)
+  }, 500)
 );
 
 formEl.addEventListener('submit', ev => {
-  console.log(feedbackFormState);
-  localStorage.clear();
-  ev.preventDefault();
-  formEl.reset();
+  if (emailEl.value) {
+    console.log(feedbackFormState);
+    localStorage.clear();
+    ev.preventDefault();
+    formEl.reset();
+  }
 });
 
 const addInputData = () => {
